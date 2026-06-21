@@ -41,7 +41,7 @@ If yes:
 Here's exactly what to do:
 1. Go to: https://github.com/settings/tokens?type=beta
 2. Click "Generate new token" → "Fine-grained token"
-3. Set resource owner to: HappyBrainCS
+3. Set resource owner to: context-game
 4. Under "Repository access" → "Only select repositories" → choose "context-game"
 5. Under "Permissions" → "Contents: Write" and "Pull requests: Write"
 6. Click "Generate token"
@@ -84,10 +84,10 @@ Say: "You're in. You are `anon-a1b2c3d4`. Ask me anything — I'll check the gam
 Fetch the game index and cache it for the session:
 
 **For public repos (after launch):**
-`https://raw.githubusercontent.com/HappyBrainCS/context-game/main/wiki/agent-index.json`
+`https://raw.githubusercontent.com/context-game/context-game/main/wiki/agent-index.json`
 
 **For private repos (during testing):**
-`GET https://api.github.com/repos/HappyBrainCS/context-game/contents/wiki/agent-index.json`
+`GET https://api.github.com/repos/context-game/context-game/contents/wiki/agent-index.json`
 — Decode the base64 `content` field to get JSON.
 
 ## Edge Cases

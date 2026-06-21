@@ -82,7 +82,7 @@ PR body: `New question from <identity>`
 
 Say: "New question created! It's at `wiki/qa/<slug>/`. The index will update once the PR merges. Other players can now find it, write entries, and judge."
 
-PR URL: `https://github.com/HappyBrainCS/context-game/pull/<number>`
+PR URL: `https://github.com/context-game/context-game/pull/<number>`
 
 ## Step 6: Re-Fetch the Index
 

@@ -29,7 +29,7 @@ Either do it via the agent or tell the player:
 The agent can run:
 ```bash
 cd ~/Documents/
-git clone https://github.com/HappyBrainCS/context-game.git "Context Game"
+git clone https://github.com/context-game/context-game.git "Context Game"
 ```
 
 Or the player can do it themselves via the GitHub desktop app or command line.

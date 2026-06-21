@@ -37,7 +37,7 @@ Player says "compare #3 and #7." Map the ranks to filenames from `index.md`.
 
 ## Step 2: Read Both Entry Files
 
-Fetch each file from: `https://raw.githubusercontent.com/HappyBrainCS/context-game/main/wiki/qa/<slug>/entries/<filename>.md`
+Fetch each file from: `https://raw.githubusercontent.com/context-game/context-game/main/wiki/qa/<slug>/entries/<filename>.md`
 
 For each file:
 1. Parse the YAML frontmatter (between the first `---` and second `---`)

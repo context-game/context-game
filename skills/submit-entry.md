@@ -12,7 +12,7 @@ Player says they want to write an answer to a question.
 
 Before writing, check if the player already has an entry for this question.
 
-Fetch the entries directory: `GET https://api.github.com/repos/HappyBrainCS/context-game/contents/wiki/qa/<slug>/entries`
+Fetch the entries directory: `GET https://api.github.com/repos/context-game/context-game/contents/wiki/qa/<slug>/entries`
 
 Search for any file starting with the player's identity hash. If found, note the filename — the player is updating an existing entry, not creating a new one.
 
@@ -72,12 +72,12 @@ PR title: `Entry: <slug>`
 
 After submission, say: "Your entry is submitted! It'll appear on the question page once the PR is reviewed and merged. I'll let you know when it goes live."
 
-Show the PR URL: `https://github.com/HappyBrainCS/context-game/pull/<number>`
+Show the PR URL: `https://github.com/context-game/context-game/pull/<number>`
 
 You can optionally enable auto-merge on the PR so it merges automatically once CI passes:
 
 ```
-PATCH /repos/HappyBrainCS/context-game/pulls/{number}
+PATCH /repos/context-game/context-game/pulls/{number}
 Authorization: Bearer {TOKEN}
 Body: { "auto_merge": { "merge_method": "squash" } }
 ```
