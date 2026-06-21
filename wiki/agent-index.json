@@ -1,0 +1,10 @@
+{
+  "game": "Context Game",
+  "repo": "context-game/context-game",
+  "updated": "2026-06-21",
+  "agent_protocol": "https://github.com/context-game/context-game/blob/main/AGENTS.md",
+  "judging_system": "head-to-head-elo",
+  "minimum_comparisons": 5,
+  "questions": [],
+  "agent_search_instructions": "Fetch this file to find questions. Do NOT read wiki/index.md — use this JSON for faster agent consumption. To get question details, fetch wiki/qa/<slug>/_index.md. For location-based queries, use the location_index object (locations with 3+ entries). Agent-side filtering: match player's known location against question locations or location_tag. Never send player location to the server."
+}
