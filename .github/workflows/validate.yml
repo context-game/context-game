@@ -112,7 +112,7 @@ jobs:
             # Extract just filenames from ls-tree output (field 4 = path, then basename)
             EXISTING_FILES=$(echo "$LS_OUTPUT" | awk '{print $4}' | xargs -n1 basename)
             # Check each existing entry for same author
-            echo "$EXISTING_FILES" | while IFS= read -r existing; do
+            while IFS= read -r existing; do
               [ -z "$existing" ] && continue
               # Skip self (same filename)
               if [ "$existing" = "$(basename "$f")" ]; then
@@ -131,7 +131,7 @@ jobs:
                   fi
                 fi
               fi
-            done
+            done <<< "$EXISTING_FILES"
           done <<< "$ALL_ENTRIES"
           if [ -n "$ERRORS" ]; then
             echo "ERROR: One-active-entry violation:"
