@@ -7,6 +7,20 @@
   "minimum_comparisons": 5,
   "questions": [
     {
+      "slug": "what-is-the-context-game",
+      "title": "What is the Context Game?",
+      "entry_count": 2,
+      "judgment_count": 0,
+      "participant_count": 2,
+      "last_activity": "2026-06-21",
+      "ask_credit": "unknown",
+      "phase": "collecting",
+      "revealed_authors": 1,
+      "locations": {
+        "Cedar City, UT": 1
+      }
+    },
+    {
       "slug": "can-i-fork-this-project",
       "title": "Can I fork this project?",
       "entry_count": 1,
@@ -67,17 +81,6 @@
     {
       "slug": "is-my-data-private",
       "title": "Is my data private? What information gets shared?",
-      "entry_count": 1,
-      "judgment_count": 0,
-      "participant_count": 1,
-      "last_activity": "2026-06-21",
-      "ask_credit": "unknown",
-      "phase": "collecting",
-      "revealed_authors": 0
-    },
-    {
-      "slug": "what-is-the-context-game",
-      "title": "What is the Context Game?",
       "entry_count": 1,
       "judgment_count": 0,
       "participant_count": 1,

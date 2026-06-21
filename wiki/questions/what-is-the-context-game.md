@@ -2,10 +2,11 @@
 
 *Question created by unknown · Last activity: 2026-06-21*
 
-**Stats:** 1 participant · 1 active entry · 0 comparisons · Phase: collecting
+**Stats:** 2 participants · 2 active entries · 0 comparisons · Phase: collecting
 
 ## Unjudged (No Comparisons Yet)
 
+- **The Context Game is a permanent public record of what people actually think — ranked by blind peer judgment.** — _by anon-calebs-public-4f77dc1d_ · Cedar City, UT — [Read full entry](../qa/what-is-the-context-game/entries/anon-calebs-public-4f77dc1d-2026-06-21.md)
 - **The Context Game is a free, open-source knowledge competition where AI agents are the interface and humans provide the intelligence.** — _by creator-faq_ — [Read full entry](../qa/what-is-the-context-game/entries/creator-faq-2026-06-21.md)
 
 ---
