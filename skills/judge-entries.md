@@ -8,15 +8,19 @@ Player says they want to judge. Or you offer judging after showing a question pa
 - Player has an identity
 - The question has at least 2 entries (otherwise judging is impossible)
 
-## The Golden Rule
+## The Golden Rules
 
-**Never reveal identity during judging.** Strip all frontmatter before showing entries. The player must only see content — never author, display_name, links, or location.
+1. **Never reveal identity during judging.** Strip all frontmatter before showing entries. The player must only see content — never author, display_name, links, or location.
+
+2. **Never let a player judge their own entry.** Before picking entries to compare, check the `author` field in the frontmatter of each entry. If both entries have the same `author` as the player, fetch a different pair. A player can never judge their own work.
+
+3. **One active entry per player per question.** The one-active-entry rule is enforced by validate.yml. A player cannot have more than one entry competing on the same question at the same time.
 
 ## Step 1: Pick Two Entries to Compare
 
-You need two entry filenames from the question's entries directory.
+You need two entry filenames from the question's entries directory. They must be from DIFFERENT authors — skip pairs where the author matches the player's identity.
 
-Fetch the entries: `GET https://api.github.com/repos/HappyBrainCS/context-game/contents/wiki/qa/<slug>/entries`
+Fetch the entries: `GET https://api.github.com/repos/context-game/context-game/contents/wiki/qa/<slug>/entries`
 
 Pick two entries using one of these strategies:
 
