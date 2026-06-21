@@ -34,19 +34,20 @@ echo "anon-a1b2c3d4" > ~/.config/context-game/identity
 
 ## Step 3: Offer GitHub Token
 
-Say: "To submit entries and make judgments, I need a GitHub token. Without one, you can still browse all questions and read Top 10 answers. Want to set one up?"
+Say: "To submit entries and make judgments, I need a GitHub classic personal access token with the `public_repo` scope. Without one, you can still browse all questions and read Top 10 answers. Want to set one up?"
 
 If yes:
 ```
 Here's exactly what to do:
-1. Go to: https://github.com/settings/tokens?type=beta
-2. Click "Generate new token" → "Fine-grained token"
-3. Set resource owner to: context-game
-4. Under "Repository access" → "Only select repositories" → choose "context-game"
-5. Under "Permissions" → "Contents: Write" and "Pull requests: Write"
-6. Click "Generate token"
-7. Copy the token and paste it here
+1. Go to: https://github.com/settings/tokens
+2. Click "Generate new token" → "Token (classic)"
+3. Give it any name (e.g. "Context Game"), set an expiration
+4. Under "Scopes", check the box labeled "public_repo" — that's it
+5. Click "Generate token"
+6. Copy the token and paste it here
 ```
+
+**Important:** The `public_repo` scope works on any public repo. You do NOT need to select or search for "context-game/context-game" — the token just works because our game repo is public.
 
 Store the token:
 ```

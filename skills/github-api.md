@@ -5,7 +5,7 @@ No `gh` CLI, no Node.js, no scripts — just HTTP calls.
 
 ## Prerequisites
 
-- A GitHub token with `Contents: Write` and `Pull Requests: Write` scope for this repo
+- A GitHub classic personal access token with the `public_repo` scope
 - The repo is `context-game/context-game`
 - Token stored at `~/.config/context-game/github-token`
 

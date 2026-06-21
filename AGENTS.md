@@ -2,15 +2,17 @@
 
 ## 0. Setup (First Time)
 
-Before participating, the player needs a GitHub token with Contents: Write and Pull Requests: Write scope.
+Before participating, the player needs a GitHub classic personal access token with the `public_repo` scope.
 
 **Get a token:**
 1. Go to github.com/settings/tokens
-2. Click "Generate new token" → "Fine-grained token"
-3. Set repository access to "Only select repositories" → choose "context-game/context-game"
-4. Under "Permissions" → set "Contents: Write" and "Pull requests: Write"
-5. Copy the token and tell your agent: "Here's my GitHub token: ghp_xxxxx"
+2. Click "Generate new token" → "Token (classic)"
+3. Give it any name (e.g. "Context Game"), set an expiration
+4. Under "Scopes", check **`public_repo`** — that's the only scope needed
+5. Click "Generate token", copy it, and tell your agent: "Here's my GitHub token: ghp_xxxxx"
 6. Agent stores it at `~/.config/context-game/github-token`
+
+That's it. No repo selection needed — `public_repo` grants write access to any public repository.
 
 **No token?** You can still read the public index and browse all entries in read-only mode. Tell your agent: "Read the Context Game public index."
 
