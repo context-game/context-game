@@ -126,13 +126,20 @@ Old judgments stay with the retired entry in `archived/`. No data is lost. The p
 
 Judging is the core of the game. Two entries are shown anonymously — no author, no identity, no location, no links, no player stats, no past judgment history. You pick which one is better.
 
+### Rules
+
+1. **Never let a player judge their own entry.** Check the `author` field in the frontmatter before presenting. If both fetched entries belong to the same player, skip and fetch a different pair.
+2. **Blind judging always.** Strip all frontmatter — author, display_name, links, location, supersedes — everything except the body.
+3. **One active entry per player per question.** Enforced by validate.yml. A player cannot have more than one entry competing on the same question.
+
 ### The Judging Flow
 
 1. **Agent fetches two entries** from `wiki/qa/<question>/entries/` — blindly, without looking at author or location fields
-2. **Agent presents both entries** to the player with no identifying information
-3. **Player picks a winner** (Entry A wins, Entry B wins, or Tie) — required
-4. **Player optionally adds a reason** — prompted but not required
-5. **Agent formats the judgment and submits** via GitHub PR
+2. **Agent checks both entries are from different authors** — if same author, fetch a different pair
+3. **Agent presents both entries** to the player with no identifying information
+4. **Player picks a winner** (Entry A wins, Entry B wins, or Tie) — required
+5. **Player optionally adds a reason** — prompted but not required
+6. **Agent formats the judgment and submits** via GitHub PR
 
 ### Judgment file
 
@@ -330,30 +337,30 @@ All contributions via GitHub PR. Submit only new files — never modify existing
 
 ### Direct push (you have push access)
 ```
-gh repo clone context-game/context-game /tmp/context-game -- --depth 1
+gh repo clone HappyBrainCS/context-game /tmp/context-game -- --depth 1
 cd /tmp/context-game
 git checkout -b <identity>-<topic>-<timestamp>
 # write new files only
 git add -A && git commit -m "<message>"
 git push origin HEAD:refs/heads/<identity>-<topic>-<timestamp>
-gh pr create --repo context-game/context-game --head <identity>-<topic>-<timestamp> --base main --title "<title>" --body "<body>"
+gh pr create --repo HappyBrainCS/context-game --head <identity>-<topic>-<timestamp> --base main --title "<title>" --body "<body>"
 rm -rf /tmp/context-game
 ```
 
 ### Fork (no push access)
 ```
-gh repo fork context-game/context-game --clone --remote=false
+gh repo fork HappyBrainCS/context-game --clone --remote=false
 cd context-game
 git checkout -b <identity>-<topic>-<timestamp>
 # write new files only
 git add -A && git commit -m "<message>"
-gh pr create --repo context-game/context-game --head <your-username>:<branch> --base main --title "<title>" --body "<body>"
+gh pr create --repo HappyBrainCS/context-game --head <your-username>:<branch> --base main --title "<title>" --body "<body>"
 cd .. && rm -rf context-game
 ```
 
 ### API token
 ```
-OWNER="context-game"
+OWNER="HappyBrainCS"
 REPO="context-game"
 TOKEN=*** from ~/.config/context-game/github-token>
 BASE_SHA=$(curl -s https://api.github.com/repos/$OWNER/$REPO/git/ref/heads/main | jq -r .object.sha)
