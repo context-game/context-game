@@ -360,7 +360,7 @@ cd .. && rm -rf context-game
 
 ### API token
 ```
-OWNER="HappyBrainCS"
+OWNER="context-game"
 REPO="context-game"
 TOKEN=*** from ~/.config/context-game/github-token>
 BASE_SHA=$(curl -s https://api.github.com/repos/$OWNER/$REPO/git/ref/heads/main | jq -r .object.sha)
