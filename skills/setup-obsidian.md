@@ -1,91 +1,81 @@
-# Skill: Setup Obsidian — Load the Game as a Local Knowledge Base
+# Skill: Setup Obsidian — Read Question Pages and Entries
 
 ## Trigger
-Player wants to browse the Context Game like a local wiki, or you want to open question pages for them to read in Obsidian.
+Player wants to read a question page or entry in Obsidian rather than in chat.
 
 ## What This Does
 
-Obsidian turns the game's wiki directory into a browsable, searchable knowledge base. Players can:
-- Read question pages with full formatting (bold, links, tables)
-- Browse entries and judgments like local files
-- Link between questions, entries, and player profiles
-- Search all content instantly
+Obsidian gives players a clean, formatted view of question pages (stats, rankings, entries) and individual entries. No token cost to browse — the content is local.
 
-## Step 1: Install Obsidian
+## Step 1: One-Time Setup
 
-The player needs Obsidian installed:
-1. Go to https://obsidian.md/download
-2. Download and install (free, all platforms)
-3. Launch Obsidian
+**Clone the repo** (if not already done):
 
-This is a one-time setup. Takes about 2 minutes.
-
-## Step 2: Clone the Repo
-
-Either do it via the agent or tell the player:
-
-> "I need to pull the game data to your machine so Obsidian can read it. I'll do this via git."
-
-The agent can run:
 ```bash
 cd ~/Documents/
-git clone https://github.com/context-game/context-game.git "Context Game"
+git clone https://github.com/context-game/context-game.git "ContextGame"
 ```
 
-Or the player can do it themselves via the GitHub desktop app or command line.
-
-## Step 3: Open in Obsidian
-
+**Add as an Obsidian vault:**
 1. In Obsidian, click "Open folder as vault"
-2. Navigate to `~/Documents/Context Game/`
-3. Select the `wiki/` subdirectory as the vault root
+2. Navigate to `~/Documents/ContextGame/wiki/`
+3. Click "Open"
 
-The player now sees:
-- `questions/` — human-readable question pages with rankings
-- `qa/` — backend data (entries, judgments)
-- `players/` — player profiles
-- `index.md` — master question list with links
-- `agent-index.json` — machine-readable index (ignore this in Obsidian)
+The vault is now set up. The player only needs to do this once.
 
-## Step 4: Navigation Tips
+## Step 2: Reading a Question Page
 
-Show the player:
-- **Click any question link** in `index.md` to see that question's page
-- **Click an entry filename** in a question page to read the full answer
-- **Use Ctrl+O (Cmd+O)** to search all pages by name
-- **Use the graph view** to see how questions, entries, and players connect
-
-## Step 5: Sync Updates
-
-The game changes as new entries and judgments are submitted. To get the latest:
+The question page is at `wiki/questions/<slug>.md`. The agent copies just that one file to a clean location and opens it:
 
 ```bash
-cd ~/Documents/Context\ Game
-git pull
+cp ~/Documents/ContextGame/wiki/questions/<slug>.md ~/Documents/ContextGame/
+open "obsidian://open?vault=ContextGame&file=<slug>"
 ```
 
-Then in Obsidian, click the refresh button or restart. This brings in new questions, updated rankings, and new entries.
+The player sees: title, stats (entries, judgments, participants), Top 10 rankings with Elo and author info, location aggregation, poll answers.
 
-The agent can offer: "Want me to pull the latest game data every time we start a session?"
+## Step 3: Reading an Entry
 
-## When the Player Reads in Obsidian
+The entry file is at `wiki/qa/<slug>/entries/<filename>.md`. The agent copies just that one file and opens it:
 
-If the player says "open question X in Obsidian" or "show me the question page," the agent can:
+```bash
+cp ~/Documents/ContextGame/wiki/qa/<slug>/entries/<filename>.md ~/Documents/ContextGame/
+open "obsidian://open?vault=ContextGame&file=<filename-without-.md>"
+```
 
-1. Tell the player the exact page to open: "Open `wiki/qa/whats-the-best-disc-golf-course/index.md` in Obsidian"
-2. Or open it yourself if you have file system access
+The player sees: full entry content with frontmatter (author, display_name, links, location if opted in).
 
-For two entries to be judged side by side, the agent can say: "I'll fetch them and read them to you — or open `wiki/qa/whats-the-best-disc-golf-course/entries/` in Obsidian to browse them yourself."
+## Step 4: Judging Two Entries
 
-## No Obsidian? No Problem.
+For head-to-head judging, the agent copies both entry files to the vault:
 
-Obsidian is optional. The agent can always read entry content aloud or display it in chat. Obsidian just gives the player a nicer visual experience for browsing.
+```bash
+cp ~/Documents/ContextGame/wiki/qa/<slug>/entries/<entry-a>.md ~/Documents/ContextGame/
+cp ~/Documents/ContextGame/wiki/qa/<slug>/entries/<entry-b>.md ~/Documents/ContextGame/
+```
+
+Tell the player: "Entry A and Entry B are open in Obsidian. Compare them and tell me which one is better."
+
+The player can switch between the two tabs in Obsidian to compare.
+
+## Step 5: Keeping the Vault Clean
+
+After the player finishes reading, the agent removes the temporary files:
+
+```bash
+rm ~/Documents/ContextGame/*.md
+```
+
+(Keeps only the .obsidian/ config directory, not the markdown files.)
+
+## When Reading in Chat Instead
+
+If the player doesn't have Obsidian or doesn't want to use it, the agent reads the question page or entry content aloud in chat. The content is the same either way — Obsidian just gives a nicer visual experience for longer reading.
 
 ## Edge Cases
 
 | Situation | What to do |
 |---|---|
-| Player doesn't have git | Offer to use GitHub Desktop (gui) or skip Obsidian setup |
-| Player doesn't want Obsidian | Agent reads everything in chat instead |
-| Repo is private | Player needs to use SSH key or their token for git clone |
-| Sync is stale | Player might see old rankings. Offer to pull latest. |
+| Repo not cloned yet | Clone it: `git clone https://github.com/context-game/context-game.git ~/Documents/ContextGame` |
+| Player reads multiple entries | Copy one at a time. Clean up after each. |
+| Need to sync latest data | Run `cd ~/Documents/ContextGame && git pull` |
