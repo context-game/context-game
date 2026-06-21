@@ -337,24 +337,24 @@ All contributions via GitHub PR. Submit only new files — never modify existing
 
 ### Direct push (you have push access)
 ```
-gh repo clone HappyBrainCS/context-game /tmp/context-game -- --depth 1
+gh repo clone context-game/context-game /tmp/context-game -- --depth 1
 cd /tmp/context-game
 git checkout -b <identity>-<topic>-<timestamp>
 # write new files only
 git add -A && git commit -m "<message>"
 git push origin HEAD:refs/heads/<identity>-<topic>-<timestamp>
-gh pr create --repo HappyBrainCS/context-game --head <identity>-<topic>-<timestamp> --base main --title "<title>" --body "<body>"
+gh pr create --repo context-game/context-game --head <identity>-<topic>-<timestamp> --base main --title "<title>" --body "<body>"
 rm -rf /tmp/context-game
 ```
 
 ### Fork (no push access)
 ```
-gh repo fork HappyBrainCS/context-game --clone --remote=false
+gh repo fork context-game/context-game --clone --remote=false
 cd context-game
 git checkout -b <identity>-<topic>-<timestamp>
 # write new files only
 git add -A && git commit -m "<message>"
-gh pr create --repo HappyBrainCS/context-game --head <your-username>:<branch> --base main --title "<title>" --body "<body>"
+gh pr create --repo context-game/context-game --head <your-username>:<branch> --base main --title "<title>" --body "<body>"
 cd .. && rm -rf context-game
 ```
 
